@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ברכה לאריאל</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=David+Libre:wght@400;700&display=swap');
+
+        body {
+            font-family: 'David Libre', serif;
+            text-align: center;
+            background-color: #fff3e0;
+            color: #5d4037;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 32px;
+        }
+        p {
+            font-size: 20px;
+        }
+        input {
+            width: 60%;
+            height: 30px;
+            font-size: 16px;
+            margin: 10px;
+        }
+        button {
+            font-size: 18px;
+            background-color: #ff8a65;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e64a19;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 20px;
+            display: none;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+        #video {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>לאריאל, אח יקיר שכמוך</h1>
+    
+    <p>יום טוב אחי! השלם את המשפט:<br>  
+       <strong>אל תהיה צודק, תהיה...</strong></p>
+    <input type="text" id="inputText">
+    <br>
+    <button onclick="checkAnswer()">שלח</button>
+
+    <p id="message">
+        אחי, אם היו עושים מחקר על אנשים שהם 100% נדירים, אתה היית מקרה מבחן.  
+        בנוי מחומרים שאפילו המדע עוד לא גילה, עם לב בגודל של יבשת ואופי שמפיל מערכות הפעלה.  
+        תמיד שם, תמיד בגובה העיניים, ותמיד יודע להפוך כל רגע רגיל למשהו שאי אפשר לשכוח.<br>
+        בקיצור, לא סתם חבר – אגדה חיה. זכיתי בך, ותמיד מעריך אותך!<br><br>
+        <strong>אמנם אתה הולך ללימודים אבל אתה יכול לעשות למורות בית ספר ;)</strong>
+    </p>
+
+    <div id="video">
+        <iframe width="560" height="315" 
+                src="https://www.youtube.com/embed/28oxzIUKmHc?autoplay=1" 
+                title="YouTube video player" 
+                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+        </iframe>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            var input = document.getElementById("inputText").value.trim();
+            if (input === "סטלן ישיבות") {
+                var message = document.getElementById("message");
+                var video = document.getElementById("video");
+                message.style.display = "block";
+                setTimeout(() => { message.style.opacity = 1; }, 100);
+                video.style.display = "block";
+            } else {
+                alert("נסה שוב!");
+            }
+        }
+    </script>
+
+</body>
+</html>
