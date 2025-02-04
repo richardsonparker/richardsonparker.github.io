@@ -1,95 +1,188 @@
 <!DOCTYPE html>
-<html lang="he">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ברכה לאריאל</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy" content="frame-src https://www.youtube.com">
+    <title>ברוך הבא</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=David+Libre:wght@400;700&display=swap');
-
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap');
+        
         body {
-            font-family: 'David Libre', serif;
+            margin: 0;
+            font-family: 'Heebo', sans-serif;
+            background: linear-gradient(135deg, 
+                #f8e3b9 0%, /* Warmer light gold */
+                #e6b89c 35%, /* Peachy gold */
+                #d4a5a5 65%, /* Dusty rose */
+                #9cb4d4 100% /* Soft blue */
+            );
+            background-attachment: fixed;
             text-align: center;
-            background-color: #fff3e0;
-            color: #5d4037;
-            padding: 50px;
+            color: #4a4a4a;
+            min-height: 100vh;
         }
-        h1 {
-            font-size: 32px;
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        p {
-            font-size: 20px;
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.92);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 20px auto;
+            backdrop-filter: blur(8px);
         }
-        input {
-            width: 60%;
-            height: 30px;
-            font-size: 16px;
-            margin: 10px;
+
+        h2 {
+            font-size: 1.6em;
+            margin-bottom: 1em;
+            color: #3d3d3d;
+            font-weight: 500;
         }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        input[type="text"] {
+            padding: 10px 15px;
+            font-size: 1.1em;
+            border-radius: 8px;
+            border: 2px solid #e6b89c;
+            width: 80%;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #d4a5a5;
+            box-shadow: 0 0 8px rgba(212, 165, 165, 0.4);
+        }
+
         button {
-            font-size: 18px;
-            background-color: #ff8a65;
-            color: white;
+            padding: 10px 25px;
+            font-size: 1.1em;
             border: none;
-            padding: 10px 20px;
+            background: linear-gradient(to right, #e6b89c, #d4a5a5);
+            color: white;
+            border-radius: 8px;
             cursor: pointer;
+            margin-top: 12px;
+            transition: all 0.2s ease;
         }
+
         button:hover {
-            background-color: #e64a19;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(to right, #d4a5a5, #e6b89c);
         }
-        #message {
-            margin-top: 20px;
-            font-size: 20px;
+
+        .video-container {
             display: none;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 700px;
+            margin: 25px auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
             opacity: 0;
-            transition: opacity 2s ease-in-out;
+            animation: fadeIn 1.5s forwards;
         }
-        #video {
-            display: none;
-            margin-top: 20px;
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+        }
+
+        .message-container {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8px);
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #4a4a4a;
+            text-align: right;
+            margin: 0;
+            padding: 15px;
+            white-space: pre-line;
+        }
+
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(20px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
         }
     </style>
 </head>
 <body>
-
-    <h1>לאריאל, אח יקיר שכמוך</h1>
-    
-    <p>יום טוב אחי! השלם את המשפט:<br>  
-       <strong>אל תהיה צודק, תהיה...</strong></p>
-    <input type="text" id="inputText">
-    <br>
-    <button onclick="checkAnswer()">שלח</button>
-
-    <p id="message">
-        אחי, אם היו עושים מחקר על אנשים שהם 100% נדירים, אתה היית מקרה מבחן.  
-        בנוי מחומרים שאפילו המדע עוד לא גילה, עם לב בגודל של יבשת ואופי שמפיל מערכות הפעלה.  
-        תמיד שם, תמיד בגובה העיניים, ותמיד יודע להפוך כל רגע רגיל למשהו שאי אפשר לשכוח.<br>
-        בקיצור, לא סתם חבר – אגדה חיה. זכיתי בך, ותמיד מעריך אותך!<br><br>
-        <strong>אמנם אתה הולך ללימודים אבל אתה יכול לעשות למורות בית ספר ;)</strong>
-    </p>
-
-    <div id="video">
-        <iframe width="560" height="315" 
-                src="https://www.youtube.com/embed/28oxzIUKmHc?autoplay=1" 
-                title="YouTube video player" 
-                frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-        </iframe>
+    <div class="container">
+        <div class="form-container">
+            <h2>אריאל יאח יקיר יום טוב אחי! השלם את המשפט: אל תהיה צודק תהיה</h2>
+            <form onsubmit="checkAnswer(event)">
+                <input type="text" id="answer" placeholder="הכנס תשובה">
+                <button type="submit">שלח</button>
+            </form>
+        </div>
+        <div class="video-container" id="videoContainer">
+            <iframe src="https://www.youtube.com/embed/28oxzIUKmHc?si=bK061s95mwHcAPmu" frameborder="0" allowfullscreen></iframe>
+            <div class="message-container">
+                <p>אחי, אם היו עושים מחקר על אנשים שהם 100% נדירים, אתה היית מקרה מבחן
+                   בנוי מחומרים שאפילו המדע עוד לא גילה, עם לב בגודל של יבשת ואופי שמפיל מערכות הפעלה
+                   תמיד שם, תמיד בגובה העיניים, ותמיד יודע להפוך כל רגע רגיל למשהו שאי אפשר לשכוח
+                   בקיצור, לא סתם חבר – אגדה חיה. זכיתי בך, ותמיד מעריך אותך!
+                   אמנם אתה הולך ללימודים אבל אתה יכול לעשות למורות בית ספר ;)</p>
+            </div>
+        </div>
     </div>
-
     <script>
-        function checkAnswer() {
-            var input = document.getElementById("inputText").value.trim();
-            if (input === "סטלן ישיבות") {
-                var message = document.getElementById("message");
-                var video = document.getElementById("video");
-                message.style.display = "block";
-                setTimeout(() => { message.style.opacity = 1; }, 100);
-                video.style.display = "block";
+        function checkAnswer(event) {
+            if (event) event.preventDefault();
+            var answer = document.getElementById("answer").value.trim();
+            if (!answer) {
+                alert("אנא הכנס תשובה");
+                return;
+            }
+            if (answer === "סטלן ישיבות") {
+                document.getElementById("videoContainer").style.display = "block";
+                document.getElementById("answer").value = "";
             } else {
-                alert("נסה שוב!");
+                alert("תשובה לא מדוייקת אח , תנסה שוב !");
             }
         }
     </script>
-
 </body>
 </html>
